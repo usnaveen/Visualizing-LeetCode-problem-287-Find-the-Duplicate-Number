@@ -1,103 +1,70 @@
-# Duplicate Detection Algorithm Visualization
+# Getting Started with Create React App
 
-This repository contains a visualization of an algorithm to detect duplicates in an array, inspired by the solution to LeetCode problem 287: Find the Duplicate Number.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Problem Statement
+## Available Scripts
 
-**287. Find the Duplicate Number**
+In the project directory, you can run:
 
-Given an array of integers `nums` containing `n + 1` integers where each integer is in the range `[1, n]` inclusive.
+### `npm start`
 
-There is only one repeated number in `nums`, return this repeated number.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-You must solve the problem without modifying the array `nums` and uses only constant extra space.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Example 1:
+### `npm test`
 
-```
-Input: nums = [1,3,4,2,2]
-Output: 2
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Example 2:
+### `npm run build`
 
-```
-Input: nums = [3,1,3,4,2]
-Output: 3
-```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Constraints:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- `1 <= n <= 105`
-- `nums.length == n + 1`
-- `1 <= nums[i] <= n`
-- All the integers in `nums` appear only once except for precisely one integer which appears two or more times.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Follow up:
+### `npm run eject`
 
-- How can we prove that at least one duplicate number must exist in `nums`?
-- Can you solve the problem in linear runtime complexity?
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-[Link to LeetCode Problem](https://leetcode.com/problems/find-the-duplicate-number/description/)
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Solution
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Here's a Python solution that uses the "Floyd's Cycle Detection" algorithm (also known as the "Tortoise and Hare" algorithm):
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-```python
-class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        # Phase 1: Finding the intersection point of the two runners
-        tortoise = hare = nums[0]
-        while True:
-            tortoise = nums[tortoise]
-            hare = nums[nums[hare]]
-            if tortoise == hare:
-                break
-        
-        # Phase 2: Finding the entrance to the cycle
-        tortoise = nums[0]
-        while tortoise != hare:
-            tortoise = nums[tortoise]
-            hare = nums[hare]
-        
-        return hare
-```
+## Learn More
 
-### Explanation
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-This solution uses Floyd's Cycle Detection algorithm:
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-1. We treat the array as a linked list, where `nums[i]` is the "next" element after `i`.
-2. The duplicate number causes a cycle in this "linked list".
-3. We use two pointers, "tortoise" and "hare", moving at different speeds to detect the cycle.
-4. Once we find the intersection point, we reset one pointer to the start and move both at the same speed.
-5. The point where they meet again is the entrance to the cycle, which is our duplicate number.
+### Code Splitting
 
-### Time Complexity
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-The time complexity of this solution is O(n), where n is the length of the input array. We traverse the array at most twice.
+### Analyzing the Bundle Size
 
-### Space Complexity
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-The space complexity is O(1) as we're only using a constant amount of extra space (two pointers) regardless of the input size.
+### Making a Progressive Web App
 
-## Visualization
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-While our visualization demonstrates a different approach (modifying the array), it helps in understanding the concept of using array indices to detect duplicates. The Floyd's Cycle Detection method used in the actual solution is more abstract and harder to visualize, but solves the problem without modifying the array.
+### Advanced Configuration
 
-[Link to Visualization](#) <!-- You'll add the actual link once deployed -->
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## Running the Visualization Locally
+### Deployment
 
-1. Clone this repository
-2. Navigate to the project directory
-3. Install dependencies with `npm install`
-4. Start the development server with `npm start`
-5. Open `http://localhost:3000` in your browser
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-## Note on the Visualization vs. LeetCode Solution
+### `npm run build` fails to minify
 
-The visualization in this project demonstrates a technique that modifies the array to detect duplicates. While this approach doesn't meet the constraints of LeetCode problem 287, it provides an intuitive understanding of using array indices for duplicate detection.
-
-The actual LeetCode solution using Floyd's Cycle Detection algorithm is more complex and doesn't lend itself as well to a step-by-step visualization. However, understanding both approaches can provide valuable insights into problem-solving techniques for array manipulation and cycle detection in data structures.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
